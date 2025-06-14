@@ -17,14 +17,19 @@ jobs:
         with:
           node-version: 18.x
 
+      - name: PNPM o'rnatish
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
       - name: Dependenciyalarni o'rnatish
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Lint tekshirish
-        run: npm run lint
+        run: pnpm run lint
 
       - name: Testlarni ishga tushirish
-        run: npm run test
+        run: pnpm run test
 
       - name: Build qilish
-        run: npm run build
+        run: pnpm run build
